@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      dotnet: 4.7.2
+  pre_build:
+    commands:
+      - dotnet restore WebApplication3/WebApplication3.csproj
+  build:
+    commands:
+      - dotnet build WebApplication3/WebApplication3.csproj
+  post_build:
+    commands:
+      - dotnet publish -c Release -o ./app/ WebApplication3/WebApplication3.csproj
+artifacts:
+  files:
+    - '**/*'
